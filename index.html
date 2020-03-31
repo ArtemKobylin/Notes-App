@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes App (by Andrew Mead)</title>
+</head>
+
+<body>
+    <h1>Notes App</h1>
+
+    <label>
+        Search: <input id="filter" type="text" placeholder="Enter any filter">
+    </label>
+
+    <select name="sortBy" id="sort-by">
+        <option value="byEdited">Sort by last edited</option>
+        <option value="byCreated">Sort by recently created</option>
+        <option value="alphabetical">Alphabetically</option>
+    </select>
+
+    <div id="notes"></div><br>
+
+    <button id="create-note-button">Create</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
+    <script src="https://unpkg.com/uuid@latest/dist/umd/uuidv4.min.js"></script>
+    <script src="notes-functions.js"></script>
+    <script src="notes-app.js"></script>
+</body>
+
+</html>
