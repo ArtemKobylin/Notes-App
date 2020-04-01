@@ -7,17 +7,17 @@ const filters = {
 
 renderNotes(notes, filters)
 
-document.querySelector("#filter").addEventListener("input", function (e) {
+document.querySelector("#filter").addEventListener("input", (e) => {
     filters.searchText = e.target.value
     renderNotes(notes, filters)
 })
 
-document.querySelector("#sort-by").addEventListener("change", function (e) {
+document.querySelector("#sort-by").addEventListener("change", (e) => {
     filters.sortBy = e.target.value
     renderNotes(notes, filters)
 })
 
-document.querySelector("#create-note-button").addEventListener("click", function () {
+document.querySelector("#create-note-button").addEventListener("click", () => {
     const noteId = uuidv4()
     const timestamp = moment().valueOf()
 
@@ -34,7 +34,7 @@ document.querySelector("#create-note-button").addEventListener("click", function
     location.assign(`/notes-app/edit.html#${noteId}`)
 })
 
-window.addEventListener("storage", function (e) {
+window.addEventListener("storage", (e) => {
     if (e.key === "notes") {
         notes = JSON.parse(e.newValue)
         renderNotes(notes, filters)
