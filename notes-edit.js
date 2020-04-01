@@ -7,9 +7,7 @@ const noteId = location.hash.substring(1)
 let notes = getSavedNotes()
 
 //Get a matched note
-const note = notes.find(function (note) {
-    return note.id === noteId
-})
+const note = notes.find((note) => note.id === noteId)
 //Redirect if no matched note is found
 if (note === undefined) {
     location.assign("/notes-app/index.html")
@@ -20,34 +18,32 @@ titleElement.value = note.title
 bodyElement.value = note.body
 editedElement.textContent = lastEdited(note)
 
-titleElement.addEventListener("input", function (e) {
+titleElement.addEventListener("input", (e) => {
     note.title = e.target.value
     note.updatedAt = moment().valueOf()
     editedElement.textContent = lastEdited(note)
     saveNotes(notes)
 })
 
-bodyElement.addEventListener("input", function (e) {
+bodyElement.addEventListener("input", (e) => {
     note.body = e.target.value
     note.updatedAt = moment().valueOf()
     editedElement.textContent = lastEdited(note)
     saveNotes(notes)
 })
 
-document.querySelector("#remove-note-button").addEventListener("click", function () {
+document.querySelector("#remove-note-button").addEventListener("click", () => {
     removeNote(noteId)
     saveNotes(notes)
     location.assign("/notes-app/index.html")
 })
 
-window.addEventListener("storage", function (e) {
+window.addEventListener("storage", (e) => {
     if (e.key === "notes") {
         //const notes = getSavedNotes()
         notes = JSON.parse(e.newValue)
 
-        const note = notes.find(function (note) {
-            return note.id === noteId
-        })
+        const note = notes.find((note) => note.id === noteId)
 
         if (note === undefined) {
             location.assign("/notes-app/index.html")
