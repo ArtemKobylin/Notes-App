@@ -1,12 +1,8 @@
 //Read saved notes from the local storage
 const getSavedNotes = () => {
     const notesJSON = localStorage.getItem("notes")
-
-    if (notesJSON !== null) {
-        return JSON.parse(notesJSON)
-    } else {
-        return []
-    }
+    const notes = notesJSON !== null ? JSON.parse(notesJSON) : []
+    return notes
 }
 
 //Write notes in the local storage
@@ -17,7 +13,6 @@ const saveNotes = (notes) => {
 //Remove note from "notes" array
 const removeNote = (id) => {
     const noteIndex = notes.findIndex((note) => note.id === id)
-
     if (noteIndex > -1) {
         notes.splice(noteIndex, 1)
     }
@@ -39,14 +34,9 @@ const generateNoteDOM = (note) => {
     })
 
     //Set up the note title text
-    if (note.title.length > 0) {
-        textEl.textContent = note.title
-    } else {
-        textEl.textContent = "Unnamed note"
-    }
+    textEl.textContent = note.title.length > 0 ? note.title : "Unnamed note"
     textEl.setAttribute("href", `/notes-app/edit.html#${note.id}`)
     noteEl.appendChild(textEl)
-
     return noteEl
 }
 
@@ -94,12 +84,7 @@ note.title.toLowerCase().includes(filters.searchText.toLowerCase()))
 //Get the summary of how many notes you have in the main window
 const getSummary = (notes) => {
     const summary = document.createElement("h2")
-    let noteWord
-    if (notes.length === 1) {
-        noteWord = "note"
-    } else {
-        noteWord = "notes"
-    }
+    const noteWord = notes.length === 1 ? "note" : "notes"
     summary.textContent = `You have ${notes.length} ${noteWord}:`
     document.querySelector("#notes").appendChild(summary)
 }
