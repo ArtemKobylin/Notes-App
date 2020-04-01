@@ -9,7 +9,7 @@ let notes = getSavedNotes()
 //Get a matched note
 const note = notes.find((note) => note.id === noteId)
 //Redirect if no matched note is found
-if (note === undefined) {
+if (!note) { //if (!undefined)
     location.assign("/notes-app/index.html")
 }
 
@@ -45,7 +45,7 @@ window.addEventListener("storage", (e) => {
 
         const note = notes.find((note) => note.id === noteId)
 
-        if (note === undefined) {
+        if (!note) {
             location.assign("/notes-app/index.html")
         }
 
