@@ -1,7 +1,17 @@
+"use strict"
+
 //Read saved notes from the local storage
 const getSavedNotes = () => {
     const notesJSON = localStorage.getItem("notes")
-    return notesJSON? JSON.parse(notesJSON) : [] //if (notesJSON !== null)
+
+    //What if the data stored in local storage is not JSON?
+    try {
+        return notesJSON ? JSON.parse(notesJSON) : [] //if (notesJSON !== null)
+    } catch (error) {
+        console.log(error.message)
+        return []
+    }
+
 }
 
 //Write notes in the local storage
@@ -77,8 +87,8 @@ const sortNotes = (notes, sortBy) => {
 }
 
 //Filter notes of the "notes" array by a given filter
-const filterNotes = (notes, filters) => notes.filter((note) => 
-note.title.toLowerCase().includes(filters.searchText.toLowerCase()))
+const filterNotes = (notes, filters) => notes.filter((note) =>
+    note.title.toLowerCase().includes(filters.searchText.toLowerCase()))
 
 //Get the summary of how many notes you have in the main window
 const getSummary = (notes) => {

@@ -1,3 +1,5 @@
+"use strict"
+
 let notes = getSavedNotes()
 
 const filters = {
@@ -30,7 +32,7 @@ document.querySelector("#create-note-button").addEventListener("click", () => {
     })
 
     saveNotes(notes)
-    
+
     location.assign(`/notes-app/edit.html#${noteId}`)
 })
 
