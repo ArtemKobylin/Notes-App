@@ -10,7 +10,7 @@ let notes = getSavedNotes()
 
 //Get a matched note
 const note = notes.find((note) => note.id === noteId)
-//Redirect if no matched note is found
+//Redirect if no match is found
 if (!note) { //if (!undefined)
     location.assign("/notes-app/index.html")
 }
