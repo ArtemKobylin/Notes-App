@@ -1,3 +1,3 @@
 # Notes-App
 
-Hello World
+Welcome to the Notes-App wiki! Here you can test the app: https://ake-notesapp.netlify.app
